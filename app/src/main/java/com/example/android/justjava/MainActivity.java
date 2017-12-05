@@ -1,11 +1,13 @@
 package com.example.android.justjava;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * This app displays an order form to order coffee.
@@ -37,12 +39,37 @@ public class MainActivity extends AppCompatActivity {
 
     public void increment(View view) {
         quantity = quantity + 1;
-        displayQuantity(quantity);
+        Context context = getApplicationContext();
+        CharSequence text = "You can't order more than 100 coffees";
+        int duration = Toast.LENGTH_SHORT;
+
+        //If quantity is 100 or less then display the quantity, otherwise display 100 and a toast warning
+        if (quantity <= 100) {
+            displayQuantity(quantity);
+        } else {
+            quantity = 100;
+            displayQuantity(quantity);
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+
     }
 
     public void decrement(View view){
         quantity = quantity - 1;
+        Context context = getApplicationContext();
+        CharSequence text = "You can't order less than 1 coffee";
+        int duration = Toast.LENGTH_SHORT;
+
+        //If quantity is at least 1 then display this quantity, otherwise display 1 and a toast warning
+        if (quantity >= 1){
         displayQuantity(quantity);
+    } else {
+            quantity = 1;
+            displayQuantity(quantity);
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
     }
 
     /**
