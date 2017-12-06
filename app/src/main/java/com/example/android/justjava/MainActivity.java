@@ -1,6 +1,8 @@
 package com.example.android.justjava;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -26,15 +28,33 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
+        //Figure out if user has checked the whipped cream box
         CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
         boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
+
+        //Figure out if user has checked the chocolate box
         CheckBox chocolateCheckbox = (CheckBox) findViewById(R.id.chocolate_checkbox);
         boolean hasChocolate = chocolateCheckbox.isChecked();
+
+        //Save the name the user entered
         EditText nameField = (EditText) findViewById(R.id.name_field);
         String enteredName = nameField.getText().toString();
+
+
         int price = calculatePrice(hasWhippedCream, hasChocolate);
         String priceMessage = createOrderSummary(price, hasWhippedCream, hasChocolate, enteredName);
-        displayMessage(priceMessage);
+        //displayMessage(priceMessage) was used to display order summary on screen. No longer used. Saved for reference.
+
+        //This will pull up email app with pertinent info when Order button is pressed
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Just Java order for " + enteredName);
+        intent.putExtra(Intent.EXTRA_TEXT, priceMessage);
+        //To prevent the app from crashing , verifying there is an app that can handle the request
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+
     }
 
     public void increment(View view) {
@@ -81,12 +101,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * This method displays the given text on the screen.
-     */
+     * This method displays the given text on the screen. Not used. Saved for reference
+     *
     private void displayMessage(String message) {
         TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
         orderSummaryTextView.setText(message);
     }
+     */
 
     /**
      * Calculates the price of the order.
