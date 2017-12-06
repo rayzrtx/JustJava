@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         //This will pull up email app with pertinent info when Order button is pressed
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("mailto:")); // only email apps should handle this
-        intent.putExtra(Intent.EXTRA_SUBJECT, "Just Java order for " + enteredName);
+        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.order_summary_email_subject_line, enteredName));
         intent.putExtra(Intent.EXTRA_TEXT, priceMessage);
         //To prevent the app from crashing , verifying there is an app that can handle the request
         if (intent.resolveActivity(getPackageManager()) != null) {
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     public void increment(View view) {
         quantity = quantity + 1;
         Context context = getApplicationContext();
-        CharSequence text = "You can't order more than 100 coffees";
+        CharSequence text = getString(R.string.over_100_coffees_toast);
         int duration = Toast.LENGTH_SHORT;
 
         //If quantity is 100 or less then display the quantity, otherwise display 100 and a toast warning
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
     public void decrement(View view){
         quantity = quantity - 1;
         Context context = getApplicationContext();
-        CharSequence text = "You can't order less than 1 coffee";
+        CharSequence text = getString(R.string.less_than_1_coffee_toast);
         int duration = Toast.LENGTH_SHORT;
 
         //If quantity is at least 1 then display this quantity, otherwise display 1 and a toast warning
@@ -142,12 +142,12 @@ public class MainActivity extends AppCompatActivity {
      * @return text summary
      */
     private String createOrderSummary(int price, boolean hasWhippedCream, boolean hasChocolate, String enteredName) {
-        String orderSummary = "Name: " + enteredName +
-                "\nAdd Whipped Cream? " + hasWhippedCream +
-                "\nAdd Chocolate? " + hasChocolate +
-                "\nNumber of coffees: " + quantity +
-                "\nTotal: $" + price +
-                "\nThank You!";
+        String orderSummary = getString(R.string.order_summary_name, enteredName);
+        orderSummary += "\n" + getString(R.string.order_summary_whipped_cream, hasWhippedCream);
+        orderSummary += "\n" + getString(R.string.order_summary_chocolate, hasChocolate);
+        orderSummary += "\n" + getString(R.string.order_summary_quantity, quantity);
+        orderSummary += "\n" + getString(R.string.order_summary_price, price);
+        orderSummary += "\n" + getString(R.string.thank_you); //Displaying text assigned by resource id thank_you
         return orderSummary;
     }
 }

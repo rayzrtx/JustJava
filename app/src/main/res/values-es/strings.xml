@@ -1,39 +1,34 @@
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"> //Must enter when using xliff
-    <string name="app_name">Just Java</string>
-
-    <!--Hint text display in the empty field for user's name -->
-    <string name="name">Name</string>
-
-    <!--Header text for the list of toppings (CHAR Limit = 20)-->
-    <string name="toppings">Toppings</string>
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Sólo Java</string>
 
     <!--Thank you message for the order summary (CHAR limit = none)-->
-    <string name="thank_you">Thank You!</string>
+    <string name="thank_you">"¡Gracias! "</string>
+
+    <!--Header text for the list of toppings (CHAR Limit = 20)-->
+    <string name="toppings">Ingredientes</string>
 
     <!--Text for checkbox to add whipped cream -->
-    <string name="whipped_cream">Whipped Cream</string>
+    <string name="whipped_cream">Crema Batida</string>
+
+    <!--Hint text display in the empty field for user's name -->
+    <string name="name">Nombre</string>
 
     <!--Text for checkbox to add chocolate -->
     <string name="chocolate">Chocolate</string>
 
     <!--Header text for the Quantity of coffees ordered (CHAR Limit = 20)-->
-    <string name="quantity">Quantity</string>
+    <string name="quantity">Cantidad</string>
 
     <!--Text on button to Order coffee -->
-    <string name="order_button">Order</string>
-
-    <!--Text for Toast message when quantity is more than 100 -->
-    <string name="over_100_coffees_toast">You can\'t order more than 100 coffees</string>
-
-    <!--Text for Toast message when quantity is less than 1 -->
-    <string name="less_than_1_coffee_toast">You can\'t order less than 1 coffee</string>
+    <string name="order_button">Ordenar</string>
 
     <!--
         Name used for order summary. It will be shown in the format of "Name: Amy" where Amy is name
         that user entered (CHAR limit = none)
     -->
     <string name="order_summary_name">
-        Name: <xliff:g id="name" example="Amy">%s</xliff:g>
+        Nombre: <xliff:g id="name" example="Amy">%s</xliff:g>
     </string>
 
     <!--
@@ -41,7 +36,7 @@
         "Add whipped cream? true" or "Add whipped cream? false". [CHAR LIMIT=NONE]
       -->
     <string name="order_summary_whipped_cream">
-        Add whipped cream? <xliff:g id="addWhippedCream" example="true">%b</xliff:g>
+        ¿Agregue la crema batida? <xliff:g id="addWhippedCream" example="true">%b</xliff:g>
     </string>
 
     <!--
@@ -49,7 +44,7 @@
         "Add chocolate? true" or "Add chocolate? false". [CHAR LIMIT=NONE]
       -->
     <string name="order_summary_chocolate">
-        Add chocolate? <xliff:g id="addChocolate" example="true">%b</xliff:g>
+        ¿Agregue el chocolate? <xliff:g id="addChocolate" example="true">%b</xliff:g>
     </string>
 
     <!--
@@ -57,7 +52,7 @@
       "Quantity: 2", where 2 is the number of cups ordered. [CHAR LIMIT=NONE]
     -->
     <string name="order_summary_quantity">
-        Quantity: <xliff:g id="quantity" example="2">%d</xliff:g>
+        Cantidad: <xliff:g id="quantity" example="2">%d</xliff:g>
     </string>
 
     <!--
@@ -65,7 +60,7 @@
       "Total: $10" where $10 is the price. [CHAR LIMIT=NONE]
     -->
     <string name="order_summary_price">
-        Total: $<xliff:g id="price" example="$10">%d</xliff:g>
+        Precio total: $<xliff:g id="price" example="$10">%d</xliff:g>
     </string>
 
     <!--
@@ -73,7 +68,12 @@
       "Just Java order for Amy" where Amy is the user's name. [CHAR LIMIT=NONE]
     -->
     <string name="order_summary_email_subject_line">
-        Just Java order for <xliff:g id="userName" example="Amy">%s</xliff:g>
+        Sólo Java para <xliff:g id="userName" example="Amy">%s</xliff:g>
     </string>
 
+    <!--Text for Toast message when quantity is more than 100 -->
+    <string name="over_100_coffees_toast">No puedes pedir más de 100 cafés</string>
+
+    <!--Text for Toast message when quantity is less than 1 -->
+    <string name="less_than_1_coffee_toast">No puedes pedir menos de un café</string>
 </resources>
